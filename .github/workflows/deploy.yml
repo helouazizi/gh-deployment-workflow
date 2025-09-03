@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main   # or "master", depending on your repo
+      - main   # change if your default branch is "master"
 
 permissions:
   contents: read
@@ -18,14 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4   # latest version
 
-      # If you have a build step (for React, Vue, Go templates, etc.)
-      # Replace this with your actual build command
+      # If you need to build (React, Go templates, etc.), put your build command here
       - name: Build site
         run: |
           mkdir dist
-          cp -r * dist/  # Example: just copy everything into dist
+          cp -r * dist/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
